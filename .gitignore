@@ -2,7 +2,6 @@
 .DS_Store
 .ipynb_checkpoints/
 .venv
-env
 _tmp/
 _soluzioni
 progetti
