@@ -12,6 +12,6 @@ nuovo_sheet['A3'] = 'pappagallo'
 nuovo_sheet['A4'] = 'criceto'
 
 # salvo il file (come fare un "flush")
-nuovo_book.save('./files_esercizi/outputs/nuovo_file.xlsx')
+nuovo_book.save('./_personale/nuovo_file.xlsx')
 
 
