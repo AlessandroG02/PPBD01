@@ -1,7 +1,7 @@
 import pandas as pd
 from openpyxl import workbook
 
-df = pd.read_excel('DB C-Lab (Transfer).xlsx',           # leggi il file excel
+df = pd.read_excel('db_c_lab_hrr.xlsx',           # leggi il file excel
 sheet_name='anagskill')
 
 df_righe = df.iloc[[0, 1, 2]]      # estrai le righe dal data frame
