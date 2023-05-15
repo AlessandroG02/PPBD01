@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from openpyxl import Workbook
 
 nuovo_book = Workbook()          # creo l'oggetto per interfacciarmi col workbook
