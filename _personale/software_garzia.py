@@ -6,14 +6,14 @@ sheet_name='AnagSkill')
 
 df_righe = df.iloc[[0, 1, 2]]      # estrai le righe dal data frame
 
-nuovo_book = workbook()           # crea un nuovo file excel
-nuovo_sheet = nuovo_book.active         # seleziona il foglio di lavoro attivo
+new_book = workbook()           # crea un nuovo file excel
+new_sheet = new_book.active         # seleziona il foglio di lavoro attivo
 
-nuovo_book.title = "crezione_file_xlsx"
+new_book.title = "crezione_file_xlsx"
 
 # scrivi i dati del dataframe nel foglio di lavoro
 for r in dataframe_to_rows(df_righe, index=False, header=True):
-    nuovo_sheet.append(r)
+    new_sheet.append(r)
 
 # salva il file excel
-nuovo_book.save('./_personale/software_per_garzia_completo.xlsx')  
+new_book.save('./_personale/software_per_garzia_completo.xlsx')  
