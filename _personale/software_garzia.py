@@ -1,7 +1,7 @@
 import pandas as pd
 from openpyxl import workbook
 
-df = pd.read_excel('db_c_lab_hrr.xlsx',             # leggi il file excel
+df = pd.read_excel('DB C-Lab (Transfer).xlsx',           # leggi il file excel
 sheet_name='anagskill')
 
 df_righe = df.iloc[[0, 1, 2]]      # estrai le righe dal data frame
@@ -16,7 +16,7 @@ ws = wb.active            # seleziona il foglio di lavoro attivo
 for r in dataframe_to_rows(df_righe, index=False, header=True):
     ws.append(r)
 
-wb.save('software_per_garzia_completo.xlsx')  #salva il file excel
+wb.save('./_personale/software_per_garzia_completo.xlsx')  #salva il file excel
 
 
 
