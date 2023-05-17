@@ -79,7 +79,7 @@ def attach_file(filename):
 attach_file('C:\\Users\\andre\\Desktop\\ACE10001I C-Lab HR\\DB_C-Lab_(Transfer).xlsx')
 # personalizzare il nome del file cv in modo che alleghi il cv di ciascun candidato
 for nome in nomi_curriculum:
-    percorso_cv = 'C:/Users/Chay/Desktop/ACE10001_C-Lab_HR/CV al Cliente/CV/cv_' + cognome_nome + '.pdf'
+    percorso_cv = 'C:\\Users\\andre\\Desktop\\ACE10001I C-Lab HR\CV al Cliente\\CV\\cv_' + cognome_nome + '.pdf'
     attach_file(percorso_cv)
 
 try:
