@@ -5,7 +5,7 @@ from datetime import date
 
 # APERTURA FILES
 warnings.simplefilter(action="ignore", category=UserWarning)
-xlsFile = pd.ExcelFile("C:\Users\andre\Desktop\ACE10001I C-Lab HR\DB C-Lab (HRR).xlsx")
+xlsFile = pd.ExcelFile(r"C:\Users\andre\Desktop\ACE10001I C-Lab HR\DB C-Lab (HRR).xlsx")
 anagHrr = pd.read_excel(
     xlsFile,
     sheet_name="AnagSkill",
@@ -27,7 +27,7 @@ idCand = []
 candRows = []
 anagRows = []
 
-#LOOP PER ESTRAPOLARE RIGHE CANDIDTI E ID CANDIDATO DA USARE PER ANAGSKILL
+#LOOP PER ESTRAPOLARE RIGHE CANDIDATI E ID CANDIDATO DA USARE PER ANAGSKILL
 for index, row in candHrr.iterrows():                 #cicla le righe nel Candidati sheet, compara la data
     if str(row['Data invio CV al cliente']) == data: #e riempie idCand di int corrispondenti all' id candidato
         candRows.append(row)
