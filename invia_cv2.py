@@ -64,16 +64,22 @@ def seleziona_e_copia_righe(path_db, path_transfer):
                     nomi_curriculum = []
                     # Creo il Path del PDF da allegare
                     path_cv = os.path.join("C:/Users", userprofile, "Desktop/ACE10001_C-Lab_HR/CV al Cliente/CV/cv_' + cognome_nome + '.pdf'")
-                    print(path_cv)
+                    #print(path_cv)
 
-                    with pd.ExcelWriter(path_transfer, mode='a') as writer:
-                        anagskill_df.to_excel(writer, index=False, sheet_name= 'AnagSkill')
+                    #with pd.ExcelWriter(path_transfer, mode='a') as writer:
+                    #    anagskill_df.to_excel(writer, index=False, sheet_name= 'AnagSkill')
+
+                    import openpyxl
+
+                    with pd.ExcelWriter(path_transfer, engine='openpyxl', mode='a') as writer:
+                        anagskill_df.to_excel(writer, index=False, sheet_name='AnagSkill')
+
 
         # Stampo le righe selezionate
         print(copia_righe)
     
-    except ValueError:
-        print("La data inserita non è valida. Riprova con un formato corretto.")
+    #except ValueError:
+    #    print("La data inserita non è valida. Riprova con un formato corretto.")
     
     except FileNotFoundError:
         print("Uno o entrambi i file excel non sono stati trovati. Controlla i path.")
