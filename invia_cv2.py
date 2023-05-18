@@ -84,6 +84,56 @@ def seleziona_e_copia_righe(path_db, path_transfer):
     except FileNotFoundError:
         print("Uno o entrambi i file excel non sono stati trovati. Controlla i path.")
 
-# Chiamo la funzione seleziona_e_copia_righe con i path dei file xlsx
-seleziona_e_copia_righe(path_db, path_transfer)
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
+def send_email(sender_email, sender_password, recipient_email, subject, message, attachments=None):
+    # Crea l'oggetto del messaggio
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = subject
+
+    # Aggiunge il corpo del messaggio
+    msg.attach(MIMEText(message, 'plain'))
+
+    # Aggiunge gli allegati, se presenti
+    if attachments:
+        for attachment in attachments:
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload(open(attachment, 'rb').read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f'attachment; filename="{attachment}"')
+            msg.attach(part)
+
+    # Connette al server SMTP di Gmail
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender_email, sender_password)
+
+    # Invia il messaggio
+    server.send_message(msg)
+    server.quit()
+
+
+
+    
+
+# Specifica gli allegati, se necessario
+attachments = [path_transfer]
+# Esempio di utilizzo
+sender_email = 'prova.test.camerana@gmail.com'
+sender_password = 'Ppbd01!!!'
+recipient_email = 'kpanik@gmail.com'
+subject = 'Curriculum Candidati'
+message = 'Questo è il corpo del messaggio.'
+    # Invia l'email
+send_email(sender_email, sender_password, recipient_email, subject, message, attachments)
+print('ok')
+
+
+
 
