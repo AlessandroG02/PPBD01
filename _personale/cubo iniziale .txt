@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Three.js Cubo Animato con controlli</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r118/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r118/examples/js/controls/OrbitControls.js"></script>
+    <script>
+      // Inizializza la scena, la camera e il renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Crea un cubo con lato 2 e lo aggiunge alla scena
+      const geometry = new THREE.BoxGeometry(2, 2, 2);
+      const material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      // Definisce gli intervalli di tempo e di allungamento delle facce
+      const intervalloTempo = 1000; // un secondo
+      const allungamentoMassimo = 5; // il massimo allungamento delle facce
+
+      // Anima le facce del cubo
+      setInterval(() => {
+        // Genera un colore casuale per le facce
+        const coloriFaccia = [
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+          new THREE.Color(Math.random(), Math.random(), Math.random()),
+        ];
+
+        // Cicla tutte le facce del cubo e le allunga e colora
+        for (let i = 0; i < 6; i++) {
+          const faccia = cube.geometry.faces[i];
+          faccia.color = coloriFaccia[i];
+          const altezza = (Math.random() * allungamentoMassimo) + 1;
+          faccia.a.z = faccia.b.z = faccia.c.z = faccia.d.z = altezza;
+          cube.geometry.verticesNeedUpdate = true;
+        }
+      }, intervalloTempo);
+
+      // Aggiungi i controlli
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.update();
+
+      // Aggiorna la posizione della camera
+      camera.position.z = 5;
+
+      // Anima la scena
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        controls.update();
+      }
+      animate();
+    </script>
+  </body>
+</html>
