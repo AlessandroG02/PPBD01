@@ -3,8 +3,8 @@ import xlsxwriter
 import datetime
 from utilities import Utilities
 
-HRR_PATH = 'C:\\Users\\andre\\Desktop\\filler_data\\DB C-Lab (HRR).xlsx'
-TRANSFERT_PATH = 'C:\\Users\\andre\\Desktop\\filler_data\\DB C-Lab (Transfer).xlsx'
+HRR_PATH = '\\Corsi\Dati\Documenti\Corsisti\PPBD01-06\Desktop\email_fillerDB C-Lab (HRR).xlsx'
+TRANSFERT_PATH = '\\Corsi\Dati\Documenti\Corsisti\PPBD01-06\Desktop\email_fillerDB C-Lab (Transfer).xlsx'
 
 hrrWorkbook = openpyxl.load_workbook(HRR_PATH, read_only=True, data_only=True)
 #transfertWorkbook = openpyxl.load_workbook(TRANSFERT_PATH, read_only=True, data_only=True)
