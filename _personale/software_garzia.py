@@ -3,12 +3,12 @@ from openpyxl import Workbook
 from openpyxl.utils import dataframe
 
 df_anag = pd.read_excel('DB C-Lab (HRR).xlsx',           # leggi il file excel
-     sheet_name='AnagSkill')                         #legge il foglio
+     sheet_name='AnagSkill')                         # legge il foglio anagskill
 
 df_righe = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal data frame
 
 df_candidati = pd.read_excel('DB C-Lab (HRR).xlsx',           # leggi il file excel
-     sheet_name='Candidati')                         #legge il foglio
+     sheet_name='Candidati')                         # legge il foglio candidati
 
 # df_righe_2 = df_candidati.iloc[[0, 1, 2]] 
 print(df_candidati)
