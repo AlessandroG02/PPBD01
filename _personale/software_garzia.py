@@ -10,16 +10,16 @@ date_target = datetime.datetime.strptime(date_imput,'%d/%m/%Y')
 df_anag = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il file excel
      sheet_name='AnagSkill')                         # legge il foglio anagskill
 
-df_righe = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal data frame
+df_righe = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal df
 
 df_candidati = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il file excel
-     sheet_name='Candidati')                         # legge il foglio candidati
+     sheet_name='Candidati')                      # legge il foglio candidati
 
 # filtra solo le righe specificate
 filtered_rows = df_candidati[df_candidati['Data invio CV al cliente'].eq(date_target)]
 #print(filtered_rows)
 
-df_righe_2 = df_candidati.iloc[filtered_rows.index] 
+df_righe_2 = df_candidati.iloc[filtered_rows.index]   # estrae le righe dal df
 #print(df_righe_2)
 
 filtered_cand_id = df_righe_2['Id candidato']
