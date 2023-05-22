@@ -42,5 +42,5 @@ for r in dataframe.dataframe_to_rows(df_righe, index=False, header=True):
 for r in dataframe.dataframe_to_rows(df_righe_2, index=False, header=True):
     new_sheet_2.append(r)
 
-# salva il file excel
+# salva il nuovo file excel
 new_book.save('./_personale/DB C-Lab (Transfer).xlsx')  
