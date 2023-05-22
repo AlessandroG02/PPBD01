@@ -64,53 +64,10 @@ def seleziona_e_copia_righe(path_db, path_transfer):
                     nomi_curriculum = []
                     # Creo il Path del PDF da allegare
                     path_cv = os.path.join("C:/Users", userprofile, "Desktop/ACE10001_C-Lab_HR/CV al Cliente/CV/cv_' + cognome_nome + '.pdf'")
+                    print(path_cv)
 
                     with pd.ExcelWriter(path_transfer, mode='a') as writer:
                         anagskill_df.to_excel(writer, index=False, sheet_name= 'AnagSkill')
-
-                    # Importo i moduli necessari per inviare la mail
-                    #import smtplib
-                    #from email.message import EmailMessage
-
-                    # Definisco i parametri della mail
-                    #sender = "mail.lunodesign@gmail.com"
-                    #receiver = "kpanik@gmail.com"
-                    #subject = "Curriculum"
-                    #body = "This is a test email with a pdf and an excel file attached."
-                    #pdf_file = path_cv
-                    #excel_file = path_transfer
-                    #pdf_file = path_cv
-
-                    # Crea un messaggio di posta elettronica
-                    #msg = EmailMessage()
-                    #msg["From"] = sender
-                    #msg["To"] = receiver
-                    #msg["Subject"] = subject
-                   # msg.set_content(body)
-
-                    # Allego il file PDF
-                    #with open(pdf_file, "rb") as f:
-                    #    file_data = f.read()
-                    #    file_name = os.path.basename(f.name)
-                    #    msg.add_attachment(file_data, maintype="application", subtype="pdf", filename=file_name)
-
-                    # Allego il file EXCEL
-                    #with open(excel_file, "rb") as f:
-                    #    file_data = f.read()
-                    #    file_name = os.path.basename(f.name)
-                    #    msg.add_attachment(file_data, maintype="application", subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename=file_name)
-
-                    # Creo l'oggetto SMTP e invio la mail
-                    #with smtplib.SMTP_SSL("smtp.gmail.com", 587) as smtp:
-                        # Attivo il protocollo SSL alla porta 587 con ehlo e starttls altrimenti rem
-                    #    smtp.ehlo()
-                    #    smtp.starttls()
-                        # Effettuo il login con la mia mail
-                    #    smtp.login(sender, "luno10design2030")
-                        # Invio la mail
-                    #    smtp.send_message(msg)
-                        # Stampo un messaggio di conferma
-                    #    print("La mail è stata inviata con successo")
 
         # Stampo le righe selezionate
         print(copia_righe)
@@ -123,4 +80,3 @@ def seleziona_e_copia_righe(path_db, path_transfer):
 
 # Chiamo la funzione seleziona_e_copia_righe con i path dei file xlsx
 seleziona_e_copia_righe(path_db, path_transfer)
-
