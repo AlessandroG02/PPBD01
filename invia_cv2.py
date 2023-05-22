@@ -64,9 +64,16 @@ def seleziona_e_copia_righe(path_db, path_transfer):
                     nomi_curriculum = []
                     # Creo il Path del PDF da allegare
                     path_cv = os.path.join("C:/Users", userprofile, "Desktop/ACE10001_C-Lab_HR/CV al Cliente/CV/cv_' + cognome_nome + '.pdf'")
+                    print(path_cv)
 
-                    with pd.ExcelWriter(path_transfer, mode='a') as writer:
-                        anagskill_df.to_excel(writer, index=False, sheet_name= 'AnagSkill')
+                    #with pd.ExcelWriter(path_transfer, mode='a') as writer:
+                    #    anagskill_df.to_excel(writer, index=False, sheet_name= 'AnagSkill')
+
+                    import openpyxl
+
+                    with pd.ExcelWriter(path_transfer, engine='openpyxl', mode='a') as writer:
+                        anagskill_df.to_excel(writer, index=False, sheet_name='AnagSkill')
+
 
                     # Importo i moduli necessari per inviare la mail
                     #import smtplib
@@ -115,12 +122,62 @@ def seleziona_e_copia_righe(path_db, path_transfer):
         # Stampo le righe selezionate
         print(copia_righe)
     
-    except ValueError:
-        print("La data inserita non è valida. Riprova con un formato corretto.")
+    #except ValueError:
+    #    print("La data inserita non è valida. Riprova con un formato corretto.")
     
     except FileNotFoundError:
         print("Uno o entrambi i file excel non sono stati trovati. Controlla i path.")
 
-# Chiamo la funzione seleziona_e_copia_righe con i path dei file xlsx
-seleziona_e_copia_righe(path_db, path_transfer)
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
+def send_email(sender_email, sender_password, recipient_email, subject, message, attachments=None):
+    # Crea l'oggetto del messaggio
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = subject
+
+    # Aggiunge il corpo del messaggio
+    msg.attach(MIMEText(message, 'plain'))
+
+    # Aggiunge gli allegati, se presenti
+    if attachments:
+        for attachment in attachments:
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload(open(attachment, 'rb').read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f'attachment; filename="{attachment}"')
+            msg.attach(part)
+
+    # Connette al server SMTP di Gmail
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender_email, sender_password)
+
+    # Invia il messaggio
+    server.send_message(msg)
+    server.quit()
+
+
+
+    
+
+# Specifica gli allegati, se necessario
+attachments = [path_transfer]
+# Esempio di utilizzo
+sender_email = 'prova.test.camerana@gmail.com'
+sender_password = 'Ppbd01!!!'
+recipient_email = 'kpanik@gmail.com'
+subject = 'Curriculum Candidati'
+message = 'Questo è il corpo del messaggio.'
+    # Invia l'email
+send_email(sender_email, sender_password, recipient_email, subject, message, attachments)
+print('ok')
+
+
+
 
