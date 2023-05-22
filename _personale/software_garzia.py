@@ -14,6 +14,7 @@ df_righe = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal data frame
 df_candidati = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il file excel
      sheet_name='Candidati')                         # legge il foglio candidati
 
+# filtra solo le righe specificate
 filtered_rows = df_candidati[df_candidati['Data invio CV al cliente'].eq(date_target)]
 #print(filtered_rows)
 
@@ -28,9 +29,9 @@ filtered_cand_id = df_righe_2['Id candidato']
 new_book = Workbook()           # crea un nuovo file excel
 
 new_sheet = new_book.active         # seleziona il foglio di lavoro attivo
-new_sheet.title = "AnagSkill"
+new_sheet.title = "AnagSkill"               # crea nuovo foglio anagskill
 
-new_book.create_sheet(title='Candidati')
+new_book.create_sheet(title='Candidati')     # crea nuovo foglio candidati 
 new_sheet_2 = new_book['Candidati']
 
 
