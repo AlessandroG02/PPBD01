@@ -12,7 +12,7 @@ with open('./files_esercizi/Sardegna_centri_urbani_per_abitante_e_altitudine_201
           encoding='latin-1') as file_in:
     reader_obj = csv.DictReader(file_in, delimiter=';')  # ottengo una lista di liste (come iterabile)
     next(reader_obj)             # salto la prima riga, dove c'è l'intestazione
-    for linea in file_reader:
+    for linea in reader_obj:
         if linea[identifier] in [str(idn) for idn in record_ids]:  # filtro
             for col_name in col_names:
                 print(col_name+':', linea[col_name])
