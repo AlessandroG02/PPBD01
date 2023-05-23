@@ -10,7 +10,7 @@ date_target = datetime.datetime.strptime(date_imput,'%d/%m/%Y')
 df_anag = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il file excel
      sheet_name='AnagSkill')                         # legge il foglio anagskill
 
-#df_righe_anagskill = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal df
+df_righe = df_anag.iloc[[0, 1, 2]]      # estrai le righe dal df
 
 df_candidati = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il file excel
      sheet_name='Candidati')                      # legge il foglio candidati
@@ -19,22 +19,11 @@ df_candidati = pd.read_excel('progetti/xlsx/DB C-Lab (HRR).xlsx',    # leggi il 
 filtered_rows = df_candidati[df_candidati['Data invio CV al cliente'].eq(date_target)]
 #print(filtered_rows)
 
-df_righe_candidati = df_candidati.iloc[filtered_rows.index]   # estrae le righe dal df
+df_righe_2 = df_candidati.iloc[filtered_rows.index]   # estrae le righe dal df
 #print(df_righe_2)
 
-filtered_cand_ids = set(df_righe_candidati['Id candidato'].values)
+filtered_cand_id = df_righe_2['Id candidato']
 #print(filtered_cand_id)
-
-df_righe_anagskill = pd.read_excel(df_anag, sheet_name= 'AnagSkill')
-anagskill_transfer = pd.DataFrame()
-for id_anag in filtered_cand_ids:
-    #identificativo_candidato = ['Id candidato']
-
-    filtered_rows_anag = df_anag[df_anag['Progr Interno'].eq(id_anag)]
-    lines_to_copy = df_anag.iloc [filtered_rows_anag.index]  # estrai le righe dal df
-
-    anagskill_transfer = pd.concat(anagskill_transfer, filtered_rows_anag)
-anagskill_transfer = pd.DataFrame(anagskill_transfer)
 
 
 
@@ -48,10 +37,10 @@ new_sheet_2 = new_book['Candidati']
 
 
 # scrivi i dati del dataframe nel foglio di lavoro
-for r in dataframe.dataframe_to_rows(df_righe_anagskill, index=False, header=True):
+for r in dataframe.dataframe_to_rows(df_righe, index=False, header=True):
     new_sheet.append(r)
 
-for r in dataframe.dataframe_to_rows(df_righe_candidati, index=False, header=True):
+for r in dataframe.dataframe_to_rows(df_righe_2, index=False, header=True):
     new_sheet_2.append(r)
 
 # salva il nuovo file excel
@@ -76,63 +65,3 @@ for cognome, nome in names_cv:
                 'Risolvere il conflitto ed eseguire nuovamente lo script.')
     
 print('File di CV trovati:', *[file.name for file in file_list], sep='\n  - ')
-
-# automatizzazione mail
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-
-# Parametri di configurazione per l'invio della mail
-smtp_server = 'smtp.office365.com' #da verificare
-smtp_port = 587
-sender_email = 'prova.test.camerana@gmail.com' # inserire mail d'invio'
-sender_password = 'PasswordNuova1'               
-receiver_email = 'centralesede29@gmail.com'  # inserire mail destinatario
-subject = 'Candidati'
-body = """Alla cortese attenzione della Sede Centrale,
-in allegato i file relativi ai candidati selezionati per le richieste ricevute.
-
-Cordiali saluti"""
-
-# Crea il messaggio
-message = MIMEMultipart()
-message['From'] = sender_email
-message['To'] = receiver_email
-message['Subject'] = subject
-message.attach(MIMEText(body, 'plain'))
-
-
-def attach_file(filename):                # Funzione per allegare i file
-    with open(filename, 'rb') as file:
-        attachment = MIMEBase('application', 'octet-stream')
-        attachment.set_payload(file.read())
-        attachment.add_header('Content-Disposition', 'attachment', filename=filename)
-        message.attach(attachment)
-
-# Allega i file
-for nome in names_cv:       # personalizzare il nome del file cv in modo che alleghi il cv di ciascun candidato
-    #percorso_cv =./CV al Cliente/cv_{cognome_nome}.pdf'
-    attach_file(f'C:/./CV al Cliente/{glob_pattern} (Andrea).docx')
-
-
-attach_file('./DB C-Lab_(Transfer).xlsx')
-
-
-
-try:
-    # Connessione al server SMTP
-    server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()
-    server.login(sender_email, sender_password)
-
-    # Invio della mail
-    server.send_message(message)
-    print("Mail inviata con successo!")
-
-except Exception as e:
-    print("Si è verificato un errore durante l'invio della mail:", str(e))
-
-finally:
-    # Chiusura della connessione
-    server.quit()
