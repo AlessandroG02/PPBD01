@@ -1,7 +1,7 @@
 import csv
 from pprint import pprint
 
-file_path = (.\personale\'Comune-di-Torino---Attivita-commerciali.csv')
+file_path = ('_personale\Comune-di-Torino---Attivita-commerciali.csv')
 
 
 
@@ -23,12 +23,3 @@ def conta_attività(pathFile):
     print(f'Numero attività commerciali trovate: {counter}')
 
 conta_attività(file_path)
-
-
-import csv
-from pprint import pprint
-
-file_path = 'Comune-di-Torino---Attivita-commerciali.csv'
-
-
-
