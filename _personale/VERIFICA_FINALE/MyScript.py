@@ -25,3 +25,5 @@ cap_interessati = ['10126', '10127', '10134']
 risultato = conta_attivita_commerciali(file_path, anno_minimo, superficie_minima, cap_interessati)
 
 print("Numero di attività commerciali trovate:", risultato)
+
+
