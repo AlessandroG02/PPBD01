@@ -1,9 +1,10 @@
 # By TORFIS
 
 def leggi_float(messaggio, minimo, massimo):
+    risposta = ''
     while True:
         try:
-            valore = float(input(messaggio))
+            valore = float(input(messaggio) or 0)
             
             if minimo is not None and valore < minimo:
                 print(f"ERRORE: il valore minimo consentito è <{minimo}>")
