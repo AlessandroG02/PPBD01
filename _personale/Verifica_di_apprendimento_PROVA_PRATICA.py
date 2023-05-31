@@ -1,7 +1,7 @@
 import csv
 from pprint import pprint
 
-file_path = ('_personale\Comune-di-Torino---Attivita-commerciali.csv')
+file_path = (r'C:\Users\andre\Desktop\PPBD01\REPOSITORY\PPBD01\_personale\Comune-di-Torino---Attivita-commerciali.csv')
 
 
 
