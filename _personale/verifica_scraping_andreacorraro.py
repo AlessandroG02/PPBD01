@@ -17,7 +17,7 @@ if result.status_code == 200:
 
     for adv in countries:
             data = {
-            'name' : adv.select('h3[class~=country-name]'),
+            'nome' : adv.select('h3[class~=country-name]'),
             'capitale' : adv.select('span[class~=country-capital]'),
             'popolazione' : adv.select('span[class~=country-population]'),
             'area' : adv.select('span[class~=country-area]'),
