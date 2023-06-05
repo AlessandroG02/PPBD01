@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #loginModalLabel {
+            font-size: 3rem !important; 
+        }
+    
+        .logo, .title-over-image {
+            font-family: 'Bitter', serif;
+            color: #4f0343;
+        }
+    
+        .logo {
+            font-size: 20px;
+        }
+    
+        .title-over-image {  
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-size: 12vw;
+            text-shadow: 0 0 2px #e0eb11;
+        }
+    
+        .relative-div {
+            position: relative; 
+        }
+    </style>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginModalEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginModalEmail" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="loginModalPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginModalPassword">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-1 text-center">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="loginModalCheckbox">
+                            <label class="form-check-label" for="loginModalCheckbox">Remember me</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" type="button" id="loginModalSubmit">Login</button>
+                        </div>
+    
+                    </form>
+    
+                </div>
+                <div class="modal-footer justify-content-center mb-3">
+                    <span>Don't have an account?</span>
+                    <a href="#">Signup</a>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</html>
