@@ -1,0 +1,27 @@
+Richieste del cliente:
+3 sheet
+Automizazione
+Organizazione a stella:
+	HRR
+	Comunicazione periferia ---> centro (CV)
+	Orgazione dei dati
+	Anagrafica
+	Richieste commerciali sede
+	HRR manda il CV alla periferia(Non analizzare i dati)
+	Attributi indetifica l'associazione
+	Viene mandato il CV, AnagSkill, Associativa Candidati
+	Tramite Email PDF(CV), Excel(AngSkill, Associativa Candidati)
+		Automatizzata
+		Data parametro inoltro foglio: AnagSkill Candidati
+		
+		
+		
+DB HRR Blu richiesta Verde AnagSkill
+Caselle corrispettive:
+
+
+
+
+Copiare le righe in un nuovo file excle complilando AnagSkill in base alla 
+
+c-lab.hrr@aceone.it

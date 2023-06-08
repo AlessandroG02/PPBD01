@@ -1,0 +1,18 @@
+Stima = tempo di esecuzione + 10% di rischio
+Stima-----> Offerta(Gara)------>Win or Ko
+FTE-----> TEM------->PROG
+KPI
+
+
+
+
+Stima ------------ Consultivo(Fine)
+Serie storica
+Tempo e Spesa:
+Scelto anche per la semplicità della sua stipula, il contratto funziona nel seguente modo: 
+il fornitore e il cliente concordano una tariffa, che può essere giornaliera o oraria, in base al progetto. 
+Inoltre, si stabilisce il luogo in cui il professionista svolgerà il lavoro, e se necessario, 
+si prevede un rimborso delle spese come i costi di viaggio o l'acquisto di materiali indispensabili per lo svolgimento della professione, incluso l'uso di buoni pasto.
+A questo punto, il professionista (che non necessariamente deve essere un informatico, sebbene sia la professione più comune) inizia a lavorare per il cliente. 
+Un aspetto peculiare di questo contratto è che il cliente si assume l'intera responsabilità del successo del progetto.
+Perimetro di Buisness

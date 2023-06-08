@@ -1,0 +1,1 @@
+x = f'https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1685438920&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d3ef8b9ea-9df7-6b6c-a4b1-590618312a03&id=292841&aadredir=1&whr=outlook.it&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015'
